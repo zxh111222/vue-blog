@@ -25,7 +25,6 @@ let blogs = [
 
   <div v-for="blog in blogs" :key="blog.id">
     <MyWrapper>
-      <template #header>xxxxxxxxxxxxxxxxxxx</template>
       <PostItem :blog='blog' />
     </MyWrapper>
   </div>
