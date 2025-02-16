@@ -18,7 +18,7 @@ const post = reactive(
       <h3>创建博客</h3>
       <div>
         <label for="title">标题</label>
-        <input type="text" name="title" id="title" :value="post.title" @input="(e) => (post.title = e.target.value)"/>
+        <input type="text" name="title" id="title" v-model="post.title"/>
       </div>
       <div>
         <label for="content">内容</label>
