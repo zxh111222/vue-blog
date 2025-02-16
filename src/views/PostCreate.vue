@@ -14,8 +14,6 @@ const post = reactive(
 <template>
   <MyWrapper>
     <form>
-      DEBUG: {{ post.title }}
-      DEBUG: {{ post.content }}
       <h3>创建博客</h3>
       <div>
         <label for="title">标题</label>
@@ -33,49 +31,52 @@ const post = reactive(
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
-  h3 {
-    margin-bottom: 1rem;
+form {
+  padding: 2rem;
+}
+
+h3 {
+  margin-bottom: 1rem;
+}
+
+div {
+  margin-bottom: 1rem;
+
+  label {
+    font-weight: 300;
   }
 
-  div {
-    margin-bottom: 1rem;
+  input,
+  textarea {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    border: 1px solid #333;
+    padding: 5px;
+    border-radius: 5px;
 
-    label {
-      font-weight: 300;
+    &:focus {
+      outline: 2px solid #3b82f6;
+      border: none;
+    }
+  }
+
+  button {
+    background: #3b82f6;
+    color: #fff;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+
+    &:hover {
+      background: #2563eb;
     }
 
-    input,
-    textarea {
-      max-width: 100%;
-      min-width: 100%;
-      width: 100%;
-      border: 1px solid #333;
-      padding: 5px;
-      border-radius: 5px;
-
-      &:focus {
-        outline: 2px solid #3b82f6;
-        border: none;
-      }
-    }
-
-    button {
-      background: #3b82f6;
-      color: #fff;
-      width: 100%;
-      padding: 5px;
-      border-radius: 5px;
-
-      &:hover {
-        background: #2563eb;
-      }
-
-      &:disabled {
-        background: #eee;
-        cursor: not-allowed
-      }
+    &:disabled {
+      background: #eee;
+      cursor: not-allowed
     }
   }
 }
+
 </style>
