@@ -1,15 +1,24 @@
 <script setup>
 
 import MyWrapper from "@/components/MyWrapper.vue";
+import {reactive} from "vue";
+
+const post = reactive(
+  {
+    title: '',
+    content: '',
+  }
+)
 </script>
 
 <template>
   <MyWrapper>
     <form>
+      DEBUG: {{ post.title }}
       <h3>创建博客</h3>
       <div>
         <label for="title">标题</label>
-        <input type="text" name="title" id="title"/>
+        <input type="text" name="title" id="title" :value="post.title" @input="(e) => (post.title = e.target.value)"/>
       </div>
       <div>
         <label for="content">内容</label>
