@@ -22,6 +22,11 @@ const router = createRouter({
       name: 'resume',
       component: () => import('@/views/ResumeView.vue'),
     },
+    {
+      path: '/post-create',
+      name: 'post-create',
+      component: () => import('@/views/PostCreate.vue'),
+    },
   ],
 })
 
