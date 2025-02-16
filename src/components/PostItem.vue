@@ -1,5 +1,10 @@
 <script setup>
-  defineProps(['blog'])
+  defineProps({
+    blog: {
+      type: Object,
+      required: true,
+    }
+  })
 </script>
 
 <template>
