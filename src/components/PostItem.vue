@@ -22,9 +22,13 @@ defineProps({
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .header {
   display: flex;
   justify-content: space-between;
+
+  button {
+    border-radius: 15px;
+  }
 }
 </style>
