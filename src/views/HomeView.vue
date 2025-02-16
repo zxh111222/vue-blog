@@ -3,14 +3,11 @@
 </script>
 
 <template>
-  <div class="sb">
+  <div>
     <h1>This is an home page</h1>
   </div>
 </template>
 
-<style>
-.sb {
-  color: coral;
-}
+<style scoped>
 
 </style>
