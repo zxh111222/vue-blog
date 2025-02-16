@@ -13,11 +13,15 @@ const post = reactive(
 let isFormInvalid = computed(() => {
   return post.title === '' || post.content === ''
 })
+
+function sb() {
+  console.log(post.title, post.content)
+}
 </script>
 
 <template>
   <MyWrapper>
-    <form>
+    <form @submit.prevent="sb">
       <h3>创建博客</h3>
       <div>
         <label for="title">标题</label>
