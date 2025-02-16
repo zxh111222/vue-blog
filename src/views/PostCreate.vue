@@ -1,7 +1,7 @@
 <script setup>
 
 import MyWrapper from "@/components/MyWrapper.vue";
-import {reactive} from "vue";
+import {reactive, computed} from "vue";
 
 const post = reactive(
   {
@@ -9,6 +9,10 @@ const post = reactive(
     content: '',
   }
 )
+
+let isFormInvalid = computed(() => {
+  return post.title === '' || post.content === ''
+})
 </script>
 
 <template>
@@ -24,7 +28,7 @@ const post = reactive(
         <textarea name="content" id="content" rows="7" v-model="post.content"></textarea>
       </div>
       <div>
-        <button disabled>创建</button>
+        <button :disabled="isFormInvalid">创建</button>
       </div>
     </form>
   </MyWrapper>
