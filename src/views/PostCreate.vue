@@ -15,6 +15,7 @@ const post = reactive(
   <MyWrapper>
     <form>
       DEBUG: {{ post.title }}
+      DEBUG: {{ post.content }}
       <h3>创建博客</h3>
       <div>
         <label for="title">标题</label>
@@ -22,7 +23,7 @@ const post = reactive(
       </div>
       <div>
         <label for="content">内容</label>
-        <textarea name="content" id="content" rows="7"></textarea>
+        <textarea name="content" id="content" rows="7" v-model="post.content"></textarea>
       </div>
       <div>
         <button>创建</button>
