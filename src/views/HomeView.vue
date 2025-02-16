@@ -1,5 +1,6 @@
 <script setup>
 import PostItem from "@/components/PostItem.vue";
+import MyWrapper from "@/components/MyWrapper.vue";
 
 let blogs = [
   {
@@ -23,7 +24,9 @@ let blogs = [
 <template>
 
   <div v-for="blog in blogs" :key="blog.id">
-    <PostItem :blog='blog' />
+    <MyWrapper>
+      <PostItem :blog='blog' />
+    </MyWrapper>
   </div>
 </template>
 
