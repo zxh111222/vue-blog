@@ -1,11 +1,13 @@
 <script setup>
-let count = 123
-</script>
+let blog = {
+  title: 'vue 入门',
+  content: '这里讲解了关于 vue 的入门'
+}</script>
 
 <template>
   <div>
-    <h1>This is an home page {{ count }}</h1>
-  </div>
+    <h1>{{ blog.title }}</h1>
+    <div>{{ blog.content }}</div>  </div>
 </template>
 
 <style scoped>
