@@ -1,4 +1,6 @@
 <script setup>
+import PostItem from "@/components/PostItem.vue";
+
 let blogs = [
   {
     id: 1,
@@ -19,9 +21,9 @@ let blogs = [
 </script>
 
 <template>
+
   <div v-for="blog in blogs" :key="blog.id">
-    <h1>{{ blog.title }}</h1>
-    <div>{{ blog.content }}</div>
+    <PostItem />
   </div>
 </template>
 
