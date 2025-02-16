@@ -24,7 +24,7 @@ const post = reactive(
         <textarea name="content" id="content" rows="7" v-model="post.content"></textarea>
       </div>
       <div>
-        <button>创建</button>
+        <button disabled>创建</button>
       </div>
     </form>
   </MyWrapper>
