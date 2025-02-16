@@ -1,11 +1,11 @@
 <script setup>
-
+  defineProps(['blog'])
 </script>
 
 <template>
   <div class="post">
-    <h1>这里应该显示具体博客的标题</h1>
-    <div>这里应该显示具体博客的内容</div>
+    <h1>{{ blog.title }}</h1>
+    <div>{{ blog.content }}</div>
   </div>
 </template>
 

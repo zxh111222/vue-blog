@@ -23,7 +23,7 @@ let blogs = [
 <template>
 
   <div v-for="blog in blogs" :key="blog.id">
-    <PostItem />
+    <PostItem :blog='blog' />
   </div>
 </template>
 
