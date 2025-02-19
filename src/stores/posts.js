@@ -40,6 +40,9 @@ export const usePostStore = defineStore('posts-store',{
         author: "小红",
         created_at: new Date().toLocaleDateString(),
       })
+    },
+    deletePost(id){
+      this.posts = this.posts.filter((p) => p.id !== id)
     }
   },
   getters: {

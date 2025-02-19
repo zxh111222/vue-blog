@@ -1,4 +1,8 @@
 <script setup>
+import { usePostStore } from "@/stores/posts.js";
+
+let postsStore = usePostStore();
+
 defineProps({
   blog: {
     type: Object,
@@ -12,7 +16,7 @@ defineProps({
     <div class="header">
       <span>作者: {{ blog.author }} 发布于: {{ blog.created_at }}</span>
       <div>
-        <button>删除</button>
+        <button @click="postsStore.deletePost(blog.id)">删除</button>
         <button>收藏</button>
       </div>
     </div>
