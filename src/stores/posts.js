@@ -29,5 +29,19 @@ export const usePostStore = defineStore('post',{
         }
       ]
     }
+  },
+  /* 方法 */
+  actions: {
+    addPost(post){
+      this.posts.push({
+        id: this.posts.length + 1,
+        title: post.title,
+        content: post.content,
+        author: "小红",
+        created_at: new Date().toLocaleDateString(),
+      })
+    }
   }
+
+
 })

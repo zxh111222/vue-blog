@@ -2,6 +2,7 @@
 
 import MyWrapper from "@/components/MyWrapper.vue";
 import {reactive, computed} from "vue";
+import { usePostStore } from "@/stores/posts.js"
 
 const post = reactive(
   {
@@ -15,7 +16,7 @@ let isFormInvalid = computed(() => {
 })
 
 function sb() {
-  console.log(post.title, post.content)
+  usePostStore().addPost(post)
 }
 </script>
 
