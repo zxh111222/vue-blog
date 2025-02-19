@@ -1,35 +1,14 @@
 <script setup>
 import PostItem from "@/components/PostItem.vue";
 import MyWrapper from "@/components/MyWrapper.vue";
+import { usePostStore } from "@/stores/posts.js";
 
-let blogs = [
-  {
-    id: 1,
-    title: 'vue 入门',
-    content: '这里讲解了关于 vue 的入门',
-    author: '小明',
-    created_at: '2025-02-13',
-  },
-  {
-    id: 2,
-    title: 'vue 进阶',
-    content: '这里讲解了关于 vue 的进阶',
-    author: '中明',
-    created_at: '2025-02-15',
-  },
-  {
-    id: 3,
-    title: 'vue 高级',
-    content: '这里讲解了关于 vue 的高级',
-    author: '大明',
-    created_at: '2025-02-16',
-  }
-]
+let postsStore = usePostStore();
 </script>
 
 <template>
 
-  <div v-for="blog in blogs" :key="blog.id">
+  <div v-for="blog in postsStore.posts" :key="blog.id">
     <MyWrapper>
       <PostItem :blog='blog' />
     </MyWrapper>
