@@ -5,29 +5,7 @@ export const usePostStore = defineStore('posts-store',{
   /* Data 准备数据 */
   state(){
     return {
-      posts: [
-        {
-          id: 1,
-          title: 'vue 入门',
-          content: '这里讲解了关于 vue 的入门',
-          author: '小明',
-          created_at: '2025-02-13',
-        },
-        {
-          id: 2,
-          title: 'vue 进阶',
-          content: '这里讲解了关于 vue 的进阶',
-          author: '中明',
-          created_at: '2025-02-15',
-        },
-        {
-          id: 3,
-          title: 'vue 高级',
-          content: '这里讲解了关于 vue 的高级',
-          author: '大明',
-          created_at: '2025-02-16',
-        }
-      ]
+      posts: []
     }
   },
   /* 方法 */
@@ -43,6 +21,11 @@ export const usePostStore = defineStore('posts-store',{
     },
     deletePost(id){
       this.posts = this.posts.filter(p => p.id !== id)
+    },
+    getPosts(){
+      fetch('http://localhost:5173/db.json')
+        .then(res => res.json())
+        .then((data) => {this.posts = data.posts})
     }
   },
   getters: {
