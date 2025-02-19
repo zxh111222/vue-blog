@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 
-export const usePostStore = defineStore('post',{
+export const usePostStore = defineStore('posts-store',{
   /* Data 准备数据 */
   state(){
     return {
@@ -41,6 +41,14 @@ export const usePostStore = defineStore('post',{
         created_at: new Date().toLocaleDateString(),
       })
     }
+  },
+  getters: {
+    sortedPosts(){
+      return this.posts.sort((a, b) => {
+        return b.id - a.id
+      })
+    }
+
   }
 
 

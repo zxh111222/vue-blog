@@ -8,7 +8,7 @@ let postsStore = usePostStore();
 
 <template>
 
-  <div v-for="blog in postsStore.posts" :key="blog.id">
+  <div v-for="blog in postsStore.sortedPosts" :key="blog.id">
     <MyWrapper>
       <PostItem :blog='blog' />
     </MyWrapper>
