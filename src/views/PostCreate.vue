@@ -3,6 +3,9 @@
 import MyWrapper from "@/components/MyWrapper.vue";
 import {reactive, computed} from "vue";
 import { usePostStore } from "@/stores/posts.js"
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
 
 const post = reactive(
   {
@@ -17,6 +20,10 @@ let isFormInvalid = computed(() => {
 
 function sb() {
   usePostStore().addPost(post)
+  // 跳转到首页
+  router.push({
+    name: 'home'
+  })
 }
 </script>
 
