@@ -43,13 +43,11 @@ export const usePostStore = defineStore('posts-store',{
     }
   },
   getters: {
-    sortedPosts(){
-      return this.posts.sort((a, b) => {
-        return b.id - a.id
-      })
-    }
-
+    // sortedPosts(){
+    //   return this.posts.sort((a, b) => {
+    //     return b.id - a.id
+    //   })
+    // }
+    sortedPosts: (state) => state.posts.sort((a, b) => {return b.id - a.id})
   }
-
-
 })
