@@ -1,5 +1,5 @@
 <script setup>
-import { usePostStore } from "@/stores/posts.js";
+import {usePostStore} from "@/stores/posts.js";
 import {ref} from "vue";
 
 let postsStore = usePostStore();
@@ -7,23 +7,32 @@ let postsStore = usePostStore();
 const props = defineProps({
   blog: {
     type: Object,
-    required: true,
+    required: true
   }
 });
-
 
 const isEditing = ref(false)
 
 const editedPost = ref(null)
 
-function startEdit(){
-  isEditing.value = true
+function startEdit() {
+  isEditing.value = true;
   editedPost.value = {...props.blog}
 }
 
-function cancelEdit(){
-  isEditing.value = false
-  editedPost.value = null
+function cancelEdit() {
+  isEditing.value = false;
+  editedPost.value = null;
+}
+
+function handleEdit() {
+  if (editedPost.value) {
+    // 调方法
+    postsStore.editPost(editedPost.value);
+
+    isEditing.value = false;
+    editedPost.value = null;
+  }
 }
 </script>
 
@@ -31,21 +40,20 @@ function cancelEdit(){
   <div>
     <div class="edit-form" v-if="isEditing">
       编辑表单
-      <form action="">
+      <form>
         <input type="text" required v-model="editedPost.title">
         <br>
         <br>
         <textarea required v-model="editedPost.content"></textarea>
         <br>
-        <br>
         <button type="button" @click="cancelEdit">取消</button>
         |
-        <button type="submit">修改</button>
+        <button type="submit" @click="handleEdit">修改</button>
       </form>
     </div>
     <div class="post">
       <div class="header">
-        <span>作者: {{ blog.author }} 发布于: {{ blog.created_at }}</span>
+        <span>作者：{{ blog.author }} 发布于：{{ blog.created_at }}</span>
         <div>
           <button @click="postsStore.deletePost(blog.id)">删除</button>
           <button @click="startEdit">编辑</button>
@@ -55,6 +63,7 @@ function cancelEdit(){
       <div>{{ blog.content }}</div>
     </div>
   </div>
+
 </template>
 
 <style lang="scss" scoped>
@@ -95,6 +104,10 @@ h1 {
 p {
   padding: 0 1rem 1rem;
   font-weight: 300;
+}
+
+.post {
+  padding: 1rem;
 }
 
 .edit-form {
