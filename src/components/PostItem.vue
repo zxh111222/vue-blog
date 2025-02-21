@@ -1,5 +1,6 @@
 <script setup>
 import { usePostStore } from "@/stores/posts.js";
+import {ref} from "vue";
 
 let postsStore = usePostStore();
 
@@ -9,11 +10,21 @@ defineProps({
     required: true,
   }
 })
+
+const isEditing = ref(false)
+
+function startEdit(){
+  isEditing.value = true
+}
+
+function cancelEdit(){
+  isEditing.value = false
+}
 </script>
 
 <template>
   <div>
-    <div class="edit-form">
+    <div class="edit-form" v-if="isEditing">
       编辑表单
       <form action="">
         <input type="text" required>
@@ -22,7 +33,7 @@ defineProps({
         <textarea required></textarea>
         <br>
         <br>
-        <button type="button">取消</button>
+        <button type="button" @click="cancelEdit">取消</button>
         |
         <button type="submit">修改</button>
       </form>
@@ -32,7 +43,7 @@ defineProps({
         <span>作者: {{ blog.author }} 发布于: {{ blog.created_at }}</span>
         <div>
           <button @click="postsStore.deletePost(blog.id)">删除</button>
-          <button>编辑</button>
+          <button @click="startEdit">编辑</button>
         </div>
       </div>
       <h1>{{ blog.title }}</h1>
