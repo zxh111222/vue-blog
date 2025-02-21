@@ -4,21 +4,26 @@ import {ref} from "vue";
 
 let postsStore = usePostStore();
 
-defineProps({
+const props = defineProps({
   blog: {
     type: Object,
     required: true,
   }
-})
+});
+
 
 const isEditing = ref(false)
 
+const editedPost = ref(null)
+
 function startEdit(){
   isEditing.value = true
+  editedPost.value = {...props.blog}
 }
 
 function cancelEdit(){
   isEditing.value = false
+  editedPost.value = null
 }
 </script>
 
@@ -27,10 +32,10 @@ function cancelEdit(){
     <div class="edit-form" v-if="isEditing">
       编辑表单
       <form action="">
-        <input type="text" required>
+        <input type="text" required v-model="editedPost.title">
         <br>
         <br>
-        <textarea required></textarea>
+        <textarea required v-model="editedPost.content"></textarea>
         <br>
         <br>
         <button type="button" @click="cancelEdit">取消</button>
