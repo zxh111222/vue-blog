@@ -23,7 +23,7 @@ export const usePostStore = defineStore('posts-store',{
       this.posts = this.posts.filter(p => p.id !== id)
     },
     getPosts(){
-      fetch('http://localhost:8080/db.json')
+      fetch('http://localhost:8080/blog/list')
         .then(res => res.json())
         .then((data) => {this.posts = data.posts})
     }
