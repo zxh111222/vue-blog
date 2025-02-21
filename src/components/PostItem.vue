@@ -12,16 +12,32 @@ defineProps({
 </script>
 
 <template>
-  <div class="post">
-    <div class="header">
-      <span>作者: {{ blog.author }} 发布于: {{ blog.created_at }}</span>
-      <div>
-        <button @click="postsStore.deletePost(blog.id)">删除</button>
-        <button>收藏</button>
-      </div>
+  <div>
+    <div class="edit-form">
+      编辑表单
+      <form action="">
+        <input type="text" required>
+        <br>
+        <br>
+        <textarea required></textarea>
+        <br>
+        <br>
+        <button type="button">取消</button>
+        |
+        <button type="submit">修改</button>
+      </form>
     </div>
-    <h1>{{ blog.title }}</h1>
-    <div>{{ blog.content }}</div>
+    <div class="post">
+      <div class="header">
+        <span>作者: {{ blog.author }} 发布于: {{ blog.created_at }}</span>
+        <div>
+          <button @click="postsStore.deletePost(blog.id)">删除</button>
+          <button>编辑</button>
+        </div>
+      </div>
+      <h1>{{ blog.title }}</h1>
+      <div>{{ blog.content }}</div>
+    </div>
   </div>
 </template>
 
@@ -63,5 +79,18 @@ h1 {
 p {
   padding: 0 1rem 1rem;
   font-weight: 300;
+}
+
+.edit-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: #eeeeee;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  z-index: 1000;
 }
 </style>
