@@ -11,16 +11,27 @@ export const usePostStore = defineStore('posts-store',{
   /* 方法 */
   actions: {
     addPost(post){
-      this.posts.push({
-        id: this.posts.length + 1,
+      const newPost = {
+        // id: this.posts.length + 1,
         title: post.title,
         content: post.content,
-        author: "小红",
-        created_at: new Date().toLocaleDateString(),
-      })
+        // author: "小红",
+        // created_at: new Date().toLocaleDateString(),
+      };
+      // this.posts.push(newPost)
+      fetch('http://localhost:8080/blog/add', {
+        method: "POST",
+        headers: {'content-type': 'application/json'},
+        bode: JSON.stringify(newPost)
+      }).then(res => this.getPosts())
+        .catch(e => console.log(e))
     },
     deletePost(id){
-      this.posts = this.posts.filter(p => p.id !== id)
+      // this.posts = this.posts.filter(p => p.id !== id)
+      fetch('http://localhost:8080/blog/delete/' + id, {
+        method: "DELETE",
+      }).then(res => this.getPosts())
+        .catch(e => console.log(e))
     },
     getPosts(){
       fetch('http://localhost:8080/blog/list')
