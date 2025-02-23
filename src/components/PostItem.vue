@@ -60,7 +60,7 @@ function handleEdit() {
         </div>
       </div>
       <h1>{{ blog.title }}</h1>
-      <div>{{ blog.content }}</div>
+      <div class="content">{{ blog.content }}</div>
     </div>
   </div>
 
@@ -106,7 +106,7 @@ p {
   font-weight: 300;
 }
 
-.post {
+.content {
   padding: 1rem;
 }
 
