@@ -2,8 +2,9 @@
 
 import MyWrapper from "@/components/MyWrapper.vue";
 import {reactive, computed} from "vue";
-import { usePostStore } from "@/stores/posts.js"
-import { useRouter } from 'vue-router'
+import {useRouter} from 'vue-router'
+import {addPost} from "@/api/post.js";
+
 
 const router = useRouter();
 
@@ -19,11 +20,12 @@ let isFormInvalid = computed(() => {
 })
 
 function sb() {
-  usePostStore().addPost(post)
-  // 跳转到首页
-  router.push({
-    name: 'home'
-  })
+  addPost(post)
+    .then(() => {
+      // 跳转到首页
+      router.push({name: 'home'})
+    })
+
 }
 </script>
 
@@ -50,14 +52,18 @@ function sb() {
 form {
   padding: 2rem;
 }
+
 h3 {
   margin-bottom: 1rem;
 }
+
 div {
   margin-bottom: 1rem;
+
   label {
     font-weight: 300;
   }
+
   input,
   textarea {
     max-width: 100%;
@@ -66,20 +72,24 @@ div {
     border: 1px solid #333;
     padding: 5px;
     border-radius: 5px;
+
     &:focus {
       outline: 2px solid #3b82f6;
       border: none;
     }
   }
+
   button {
     background: #3b82f6;
     color: #fff;
     width: 100%;
     padding: 5px;
     border-radius: 5px;
+
     &:hover {
       background: #2563eb;
     }
+
     &:disabled {
       background: #eee;
       cursor: not-allowed
