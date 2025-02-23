@@ -1,8 +1,7 @@
 <script setup>
-import {usePostStore} from "@/stores/posts.js";
 import {ref} from "vue";
+import { deletePost, addPost} from "@/api/post.js";
 
-let postsStore = usePostStore();
 
 const props = defineProps({
   blog: {
@@ -28,16 +27,21 @@ function cancelEdit() {
 function handleEdit() {
   if (editedPost.value) {
     // 调方法
-    postsStore.editPost(editedPost.value);
-
-    isEditing.value = false;
-    editedPost.value = null;
+    addPost(editedPost.value)
+      .then(() => {
+        isEditing.value = false;
+        editedPost.value = null;
+        console.log('编辑成功' + editedPost.value)
+      })
   }
 }
 
-const confirmDelete = () => {
+const confirmDelete = (id) => {
   if (window.confirm("确定删除吗？")) {
-    postsStore.deletePost(props.blog.id)
+    deletePost(id)
+      .then(() => {
+        console.log('删除成功，id= ' + id)
+      })
 
   }
 }
