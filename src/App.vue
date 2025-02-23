@@ -10,8 +10,10 @@ postsStore.getPosts()
 <template>
   <header>
     <nav>
-      <RouterLink to="/" class="nav-link">Home</RouterLink>
-      <RouterLink to="/post-create" class="nav-link">New Post</RouterLink>
+      <RouterLink to="/" class="nav-link">首页</RouterLink>
+      <RouterLink to="/post-create" class="nav-link">创建博客</RouterLink>
+      <RouterLink to="/about" class="nav-link">关于</RouterLink>
+      <RouterLink to="/resume" class="nav-link">简历</RouterLink>
     </nav>
   </header>
 
