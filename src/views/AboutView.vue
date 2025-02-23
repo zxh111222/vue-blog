@@ -29,7 +29,7 @@ const tableData = [
 
     <el-button type="primary">Primary</el-button>
 
-    <el-divider content-position="left">Rabindranath Tagore</el-divider>
+    <el-divider content-position="right">Rabindranath Tagore</el-divider>
 
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="date" label="Date" width="180" />
