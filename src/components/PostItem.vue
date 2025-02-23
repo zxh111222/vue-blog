@@ -55,8 +55,8 @@ function handleEdit() {
       <div class="header">
         <span>作者：{{ blog.author }} 发布于：{{ blog.created_at }}</span>
         <div>
-          <button @click="postsStore.deletePost(blog.id)">删除</button>
-          <button @click="startEdit">编辑</button>
+          <button @click="postsStore.deletePost(blog.id)" class="btn-del">删除</button>
+          <button @click="startEdit" class="btn-edit">编辑</button>
         </div>
       </div>
       <h1>{{ blog.title }}</h1>
@@ -81,16 +81,16 @@ function handleEdit() {
     border-radius: 30px;
   }
 
-  div .del {
-    font-size: 20px;
-    padding: 3px;
+  div .btn-del {
+    font-size: 12px;
+    padding: 6px 12px;
     background: #fff;
     color: #ef4444;
   }
 
-  div .save {
-    font-size: 20px;
-    padding: 3px;
+  div .btn-edit {
+    font-size: 12px;
+    padding: 6px 12px;
     background: #fff;
     color: #22c55e;
     margin-left: 10px;
