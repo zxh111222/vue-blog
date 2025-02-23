@@ -34,6 +34,14 @@ function handleEdit() {
     editedPost.value = null;
   }
 }
+
+const confirmDelete = () => {
+  if (window.confirm("确定删除吗？")) {
+    postsStore.deletePost(props.blog.id)
+
+  }
+}
+
 </script>
 
 <template>
@@ -55,7 +63,7 @@ function handleEdit() {
       <div class="header">
         <span>作者：{{ blog.author }} 发布于：{{ blog.created_at }}</span>
         <div>
-          <button @click="postsStore.deletePost(blog.id)" class="btn-del">删除</button>
+          <button @click="confirmDelete" class="btn-del">删除</button>
           <button @click="startEdit" class="btn-edit">编辑</button>
         </div>
       </div>
