@@ -47,16 +47,22 @@ const confirmDelete = () => {
 <template>
   <div>
     <div class="edit-form" v-if="isEditing">
-      编辑表单
+      <h3>编辑表单</h3>
       <form @submit.prevent="handleEdit">
-        <input type="text" required v-model="editedPost.title">
-        <br>
-        <br>
-        <textarea required v-model="editedPost.content"></textarea>
-        <br>
-        <button type="button" @click="cancelEdit">取消</button>
-        |
-        <button type="submit">修改</button>
+        <div class="form-group">
+          <label>标题:</label>
+          <input type="text" required v-model="editedPost.title">
+        </div>
+
+        <div class="form-group">
+          <label>内容:</label>
+          <textarea required v-model="editedPost.content"></textarea>
+        </div>
+
+        <div class="buttons">
+          <button type="button" @click="cancelEdit" class="cancel">取消</button>
+          <button type="submit" class="edit">修改</button>
+        </div>
       </form>
     </div>
     <div class="post">
@@ -122,12 +128,58 @@ p {
   position: fixed;
   top: 50%;
   left: 50%;
-  background: #eeeeee;
+  transform: translate(-50%, -50%);
+  background: white;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 500px;
   z-index: 1000;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 150px;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.buttons button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+
+  &.edit {
+    background: #0ea5e9;
+    color: white;
+  }
+
+  &.cancel {
+    background: #ef4444;
+    color: white;
+  }
 }
 </style>
