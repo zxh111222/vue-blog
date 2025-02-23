@@ -1,10 +1,6 @@
 <script setup>
 import {RouterView} from 'vue-router'
-import {usePostStore} from "@/stores/posts.js";
 
-let postsStore = usePostStore();
-
-postsStore.getPosts()
 </script>
 
 <template>
