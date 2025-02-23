@@ -48,7 +48,7 @@ const confirmDelete = () => {
   <div>
     <div class="edit-form" v-if="isEditing">
       编辑表单
-      <form>
+      <form @submit.prevent="handleEdit">
         <input type="text" required v-model="editedPost.title">
         <br>
         <br>
@@ -56,7 +56,7 @@ const confirmDelete = () => {
         <br>
         <button type="button" @click="cancelEdit">取消</button>
         |
-        <button type="submit" @click="handleEdit">修改</button>
+        <button type="submit">修改</button>
       </form>
     </div>
     <div class="post">
