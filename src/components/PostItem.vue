@@ -1,7 +1,9 @@
 <script setup>
 import {ref} from "vue";
 import { deletePost, addPost} from "@/api/post.js";
+import {useRouter} from 'vue-router'
 
+const router = useRouter()
 
 const props = defineProps({
   blog: {
@@ -32,6 +34,7 @@ function handleEdit() {
         isEditing.value = false;
         editedPost.value = null;
         console.log('编辑成功' + editedPost.value)
+        router.go(0)
       })
   }
 }
@@ -41,8 +44,9 @@ const confirmDelete = (id) => {
     deletePost(id)
       .then(() => {
         console.log('删除成功，id= ' + id)
+        // 这种方式会刷新整个页面，如果要更优雅的解决方案，可以使用 Pinia 的状态管理方案，也就是之前用过的 store
+        router.go(0)
       })
-
   }
 }
 
@@ -73,7 +77,7 @@ const confirmDelete = (id) => {
       <div class="header">
         <span>作者：{{ blog.author }} 发布于：{{ blog.created_at }}</span>
         <div>
-          <button @click="confirmDelete" class="btn-del">删除</button>
+          <button @click="confirmDelete(blog.id)" class="btn-del">删除</button>
           <button @click="startEdit" class="btn-edit">编辑</button>
         </div>
       </div>
